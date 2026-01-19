@@ -21,6 +21,7 @@ class AuthController extends Controller
 
     /**
      * register
+     * @unauthenticated
      * @apiResource App\Http\Resources\Api\v1\AuthResource
      * @apiResourceModel App\Models\User
      */
@@ -33,6 +34,7 @@ class AuthController extends Controller
 
     /**
      * login
+     * @unauthenticated
      * @apiResource App\Http\Resources\Api\v1\AuthResource
      * @apiResourceModel App\Models\User
      */

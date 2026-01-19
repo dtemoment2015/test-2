@@ -127,7 +127,9 @@
 You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).&lt;/aside&gt;</code></pre>
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
-<p>This API is not authenticated.</p>
+<p>To authenticate requests, include an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_TOKEN}"</code></strong>.</p>
+<p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
+<p>Получите токен авторизации через эндпоинты <b>POST /api/v1/register</b> или <b>POST /api/v1/login</b>. Токен будет возвращен в ответе в поле <code>data.token</code>. Используйте его в заголовке <code>Authorization: Bearer {YOUR_AUTH_TOKEN}</code>.</p>
 
         <h1 id="avtorizaciia">Авторизация</h1>
 
@@ -152,7 +154,8 @@ You can switch the language used with the tabs at the top right (or from the nav
     --data "{
     \"name\": \"b\",
     \"email\": \"zbailey@example.net\",
-    \"password\": \"-0pBNvYgxw\"
+    \"password\": \"-0pBNvYgxw\",
+    \"password_confirmation\": \"aykcmyuwpwlvqwrsitcpscqldz\"
 }"
 </code></pre></div>
 
@@ -170,7 +173,8 @@ const headers = {
 let body = {
     "name": "b",
     "email": "zbailey@example.net",
-    "password": "-0pBNvYgxw"
+    "password": "-0pBNvYgxw",
+    "password_confirmation": "aykcmyuwpwlvqwrsitcpscqldz"
 };
 
 fetch(url, {
@@ -190,11 +194,11 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
         &quot;user&quot;: {
-            &quot;id&quot;: 77,
-            &quot;name&quot;: &quot;Mr. Adriel Romaguera&quot;,
-            &quot;email&quot;: &quot;antonio24@example.net&quot;,
-            &quot;created_at&quot;: &quot;2026-01-19T15:08:44.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2026-01-19T15:08:44.000000Z&quot;
+            &quot;id&quot;: 112,
+            &quot;name&quot;: &quot;Eulalia VonRueden&quot;,
+            &quot;email&quot;: &quot;feeney.demarcus@example.com&quot;,
+            &quot;created_at&quot;: &quot;2026-01-19T15:41:58.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2026-01-19T15:41:58.000000Z&quot;
         },
         &quot;token&quot;: null
     }
@@ -309,6 +313,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Must be at least 8 characters. Example: <code>-0pBNvYgxw</code></p>
         </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="password_confirmation"                data-endpoint="POSTapi-v1-register"
+               value="aykcmyuwpwlvqwrsitcpscqldz"
+               data-component="body">
+    <br>
+<p>Must be at least 8 characters. Example: <code>aykcmyuwpwlvqwrsitcpscqldz</code></p>
+        </div>
         </form>
 
                     <h2 id="avtorizaciia-POSTapi-v1-login">login</h2>
@@ -366,11 +382,11 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
         &quot;user&quot;: {
-            &quot;id&quot;: 78,
+            &quot;id&quot;: 113,
             &quot;name&quot;: &quot;Ms. Elisabeth Okuneva&quot;,
             &quot;email&quot;: &quot;gulgowski.asia@example.com&quot;,
-            &quot;created_at&quot;: &quot;2026-01-19T15:08:44.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2026-01-19T15:08:44.000000Z&quot;
+            &quot;created_at&quot;: &quot;2026-01-19T15:41:58.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2026-01-19T15:41:58.000000Z&quot;
         },
         &quot;token&quot;: null
     }
@@ -490,6 +506,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://localhost:8080/api/v1/logout" \
+    --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Accept: application/json"</code></pre></div>
 
 
@@ -499,6 +516,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_TOKEN}",
     "Accept": "application/json",
 };
 
@@ -559,6 +577,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-logout"
+               value="Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -591,6 +621,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost:8080/api/v1/images" \
+    --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Accept: application/json" \
     --header "Content-Type: application/json" \
     --data "{
@@ -606,6 +637,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_TOKEN}",
     "Accept": "application/json",
     "Content-Type": "application/json",
 };
@@ -632,26 +664,26 @@ fetch(url, {
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 5,
-            &quot;original_name&quot;: &quot;test-file.png&quot;,
-            &quot;url&quot;: &quot;http://localhost:8080/storage/images/19/24cb281393ed4f6d05563f480350342250f0f61665215fd49cc1206712f0be35.jpg&quot;,
-            &quot;file_size&quot;: 18732,
-            &quot;mime_type&quot;: &quot;image/jpeg&quot;,
-            &quot;width&quot;: 1920,
-            &quot;height&quot;: 1920,
-            &quot;created_at&quot;: &quot;2026-01-19T14:13:56.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2026-01-19T14:13:56.000000Z&quot;
+            &quot;id&quot;: 66,
+            &quot;original_name&quot;: &quot;animi.png&quot;,
+            &quot;url&quot;: &quot;http://localhost:8080/storage/images/2026/01/yvpRZaLlJLO4a2xFAr0v5JmtUotzKceOPzE4dkQO.png&quot;,
+            &quot;file_size&quot;: 1432037,
+            &quot;mime_type&quot;: &quot;image/png&quot;,
+            &quot;width&quot;: 1308,
+            &quot;height&quot;: 756,
+            &quot;created_at&quot;: &quot;2026-01-19T15:41:58.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2026-01-19T15:41:58.000000Z&quot;
         },
         {
-            &quot;id&quot;: 5,
-            &quot;original_name&quot;: &quot;test-file.png&quot;,
-            &quot;url&quot;: &quot;http://localhost:8080/storage/images/19/24cb281393ed4f6d05563f480350342250f0f61665215fd49cc1206712f0be35.jpg&quot;,
-            &quot;file_size&quot;: 18732,
-            &quot;mime_type&quot;: &quot;image/jpeg&quot;,
-            &quot;width&quot;: 1920,
-            &quot;height&quot;: 1920,
-            &quot;created_at&quot;: &quot;2026-01-19T14:13:56.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2026-01-19T14:13:56.000000Z&quot;
+            &quot;id&quot;: 67,
+            &quot;original_name&quot;: &quot;provident.png&quot;,
+            &quot;url&quot;: &quot;http://localhost:8080/storage/images/2026/01/V4TF6Zz74lmuBpd6Bnz0PEJYk6ByKxV5yBlKc8a1.png&quot;,
+            &quot;file_size&quot;: 4903484,
+            &quot;mime_type&quot;: &quot;image/png&quot;,
+            &quot;width&quot;: 1090,
+            &quot;height&quot;: 1475,
+            &quot;created_at&quot;: &quot;2026-01-19T15:41:58.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2026-01-19T15:41:58.000000Z&quot;
         }
     ]
 }</code>
@@ -704,6 +736,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/v1/images</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-v1-images"
+               value="Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -770,9 +814,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://localhost:8080/api/v1/images" \
+    --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Accept: application/json" \
     --header "Content-Type: multipart/form-data" \
-    --form "image=@/tmp/phpd792et8ooqdd5LztUQy" </code></pre></div>
+    --form "image=@/tmp/php2p73vnqm3obib2gxeo0" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -781,6 +826,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_TOKEN}",
     "Accept": "application/json",
     "Content-Type": "multipart/form-data",
 };
@@ -804,15 +850,15 @@ fetch(url, {
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 5,
-        &quot;original_name&quot;: &quot;test-file.png&quot;,
-        &quot;url&quot;: &quot;http://localhost:8080/storage/images/19/24cb281393ed4f6d05563f480350342250f0f61665215fd49cc1206712f0be35.jpg&quot;,
-        &quot;file_size&quot;: 18732,
-        &quot;mime_type&quot;: &quot;image/jpeg&quot;,
-        &quot;width&quot;: 1920,
-        &quot;height&quot;: 1920,
-        &quot;created_at&quot;: &quot;2026-01-19T14:13:56.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2026-01-19T14:13:56.000000Z&quot;
+        &quot;id&quot;: 68,
+        &quot;original_name&quot;: &quot;eius.png&quot;,
+        &quot;url&quot;: &quot;http://localhost:8080/storage/images/2026/01/1PePkW62GVTbYZRrYCd8nO8DXBCb71VpcrG8if4H.png&quot;,
+        &quot;file_size&quot;: 3177496,
+        &quot;mime_type&quot;: &quot;image/png&quot;,
+        &quot;width&quot;: 1507,
+        &quot;height&quot;: 149,
+        &quot;created_at&quot;: &quot;2026-01-19T15:41:58.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2026-01-19T15:41:58.000000Z&quot;
     }
 }</code>
  </pre>
@@ -865,6 +911,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-images"
+               value="Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -899,7 +957,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Изображение (PNG, JPEG, JPG, максимум 5MB) Example: <code>/tmp/phpd792et8ooqdd5LztUQy</code></p>
+<p>Изображение (PNG, JPEG, JPG, максимум 5MB) Example: <code>/tmp/php2p73vnqm3obib2gxeo0</code></p>
         </div>
         </form>
 
@@ -918,6 +976,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost:8080/api/v1/images/5" \
+    --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Accept: application/json"</code></pre></div>
 
 
@@ -927,6 +986,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_TOKEN}",
     "Accept": "application/json",
 };
 
@@ -945,15 +1005,15 @@ fetch(url, {
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: {
-        &quot;id&quot;: 5,
-        &quot;original_name&quot;: &quot;test-file.png&quot;,
-        &quot;url&quot;: &quot;http://localhost:8080/storage/images/19/24cb281393ed4f6d05563f480350342250f0f61665215fd49cc1206712f0be35.jpg&quot;,
-        &quot;file_size&quot;: 18732,
-        &quot;mime_type&quot;: &quot;image/jpeg&quot;,
-        &quot;width&quot;: 1920,
-        &quot;height&quot;: 1920,
-        &quot;created_at&quot;: &quot;2026-01-19T14:13:56.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2026-01-19T14:13:56.000000Z&quot;
+        &quot;id&quot;: 69,
+        &quot;original_name&quot;: &quot;adipisci.png&quot;,
+        &quot;url&quot;: &quot;http://localhost:8080/storage/images/2026/01/74nSB1SYA0n3av8VJxiqHxMzGAyjerafzs6ANGe9.png&quot;,
+        &quot;file_size&quot;: 5047589,
+        &quot;mime_type&quot;: &quot;image/png&quot;,
+        &quot;width&quot;: 1563,
+        &quot;height&quot;: 1860,
+        &quot;created_at&quot;: &quot;2026-01-19T15:41:58.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2026-01-19T15:41:58.000000Z&quot;
     }
 }</code>
  </pre>
@@ -1006,6 +1066,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-v1-images--id-"
+               value="Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
@@ -1047,6 +1119,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
     "http://localhost:8080/api/v1/images/5" \
+    --header "Authorization: Bearer {YOUR_AUTH_TOKEN}" \
     --header "Accept: application/json"</code></pre></div>
 
 
@@ -1056,6 +1129,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_TOKEN}",
     "Accept": "application/json",
 };
 
@@ -1115,6 +1189,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/v1/images/{id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-v1-images--id-"
+               value="Bearer {YOUR_AUTH_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_AUTH_TOKEN}</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;

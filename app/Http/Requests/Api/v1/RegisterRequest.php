@@ -18,6 +18,7 @@ class RegisterRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
+            'password_confirmation' => 'required|string|min:8', // можно было не добавлять, но для того чтобы в документации Scribe было видно что это поле обязательно
         ];
     }
 

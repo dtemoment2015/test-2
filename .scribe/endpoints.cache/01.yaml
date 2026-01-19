@@ -19,6 +19,7 @@ endpoints:
       authenticated: true
       deprecated: false
     headers:
+      Authorization: 'Bearer {YOUR_AUTH_TOKEN}'
       Accept: application/json
       Content-Type: application/json
     urlParameters: []
@@ -56,11 +57,14 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":5,"original_name":"test-file.png","url":"http:\/\/localhost:8080\/storage\/images\/19\/24cb281393ed4f6d05563f480350342250f0f61665215fd49cc1206712f0be35.jpg","file_size":18732,"mime_type":"image\/jpeg","width":1920,"height":1920,"created_at":"2026-01-19T14:13:56.000000Z","updated_at":"2026-01-19T14:13:56.000000Z"},{"id":5,"original_name":"test-file.png","url":"http:\/\/localhost:8080\/storage\/images\/19\/24cb281393ed4f6d05563f480350342250f0f61665215fd49cc1206712f0be35.jpg","file_size":18732,"mime_type":"image\/jpeg","width":1920,"height":1920,"created_at":"2026-01-19T14:13:56.000000Z","updated_at":"2026-01-19T14:13:56.000000Z"}]}'
+        content: '{"data":[{"id":66,"original_name":"animi.png","url":"http:\/\/localhost:8080\/storage\/images\/2026\/01\/yvpRZaLlJLO4a2xFAr0v5JmtUotzKceOPzE4dkQO.png","file_size":1432037,"mime_type":"image\/png","width":1308,"height":756,"created_at":"2026-01-19T15:41:58.000000Z","updated_at":"2026-01-19T15:41:58.000000Z"},{"id":67,"original_name":"provident.png","url":"http:\/\/localhost:8080\/storage\/images\/2026\/01\/V4TF6Zz74lmuBpd6Bnz0PEJYk6ByKxV5yBlKc8a1.png","file_size":4903484,"mime_type":"image\/png","width":1090,"height":1475,"created_at":"2026-01-19T15:41:58.000000Z","updated_at":"2026-01-19T15:41:58.000000Z"}]}'
         headers: []
         description: ''
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -80,6 +84,7 @@ endpoints:
       authenticated: true
       deprecated: false
     headers:
+      Authorization: 'Bearer {YOUR_AUTH_TOKEN}'
       Accept: application/json
       Content-Type: multipart/form-data
     urlParameters: []
@@ -105,11 +110,14 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":5,"original_name":"test-file.png","url":"http:\/\/localhost:8080\/storage\/images\/19\/24cb281393ed4f6d05563f480350342250f0f61665215fd49cc1206712f0be35.jpg","file_size":18732,"mime_type":"image\/jpeg","width":1920,"height":1920,"created_at":"2026-01-19T14:13:56.000000Z","updated_at":"2026-01-19T14:13:56.000000Z"}}'
+        content: '{"data":{"id":68,"original_name":"eius.png","url":"http:\/\/localhost:8080\/storage\/images\/2026\/01\/1PePkW62GVTbYZRrYCd8nO8DXBCb71VpcrG8if4H.png","file_size":3177496,"mime_type":"image\/png","width":1507,"height":149,"created_at":"2026-01-19T15:41:58.000000Z","updated_at":"2026-01-19T15:41:58.000000Z"}}'
         headers: []
         description: ''
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -129,6 +137,7 @@ endpoints:
       authenticated: true
       deprecated: false
     headers:
+      Authorization: 'Bearer {YOUR_AUTH_TOKEN}'
       Accept: application/json
     urlParameters:
       id:
@@ -153,11 +162,14 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":5,"original_name":"test-file.png","url":"http:\/\/localhost:8080\/storage\/images\/19\/24cb281393ed4f6d05563f480350342250f0f61665215fd49cc1206712f0be35.jpg","file_size":18732,"mime_type":"image\/jpeg","width":1920,"height":1920,"created_at":"2026-01-19T14:13:56.000000Z","updated_at":"2026-01-19T14:13:56.000000Z"}}'
+        content: '{"data":{"id":69,"original_name":"adipisci.png","url":"http:\/\/localhost:8080\/storage\/images\/2026\/01\/74nSB1SYA0n3av8VJxiqHxMzGAyjerafzs6ANGe9.png","file_size":5047589,"mime_type":"image\/png","width":1563,"height":1860,"created_at":"2026-01-19T15:41:58.000000Z","updated_at":"2026-01-19T15:41:58.000000Z"}}'
         headers: []
         description: ''
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -177,6 +189,7 @@ endpoints:
       authenticated: true
       deprecated: false
     headers:
+      Authorization: 'Bearer {YOUR_AUTH_TOKEN}'
       Accept: application/json
     urlParameters:
       id:
@@ -199,7 +212,10 @@ endpoints:
     fileParameters: []
     responses: []
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
