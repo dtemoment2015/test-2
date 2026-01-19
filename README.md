@@ -6,7 +6,7 @@ API для загрузки и управления изображениями �
 
 1. Клонируйте репозиторий:
 ```bash
-git clone <repository-url>
+git clone git@github.com:dtemoment2015/test-2.git
 cd test-2
 ```
 
